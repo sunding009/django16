@@ -8,12 +8,16 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Post
 
+from django.template.loader import get_template
+from datetime import datetime
+
 
 def home_page(request):
-    posts = Post.objects.all()
-    post_list = list()
-    for count, post in enumerate(posts):
-        post_list.append("No.{0} {1}<hr>".format(count, post))
-        post_list.append("<small>{0}</small><br><br>".format(post.body))
+    template = get_template('index.html')
 
-    return HttpResponse(post_list)
+    posts = Post.objects.all()
+    now = datetime.now()
+
+    html = template.render(locals())
+
+    return HttpResponse(html)
