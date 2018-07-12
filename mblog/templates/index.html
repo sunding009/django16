@@ -14,10 +14,9 @@
     <hr>
     {% for post in posts %}
         <p style="font-family: 微软雅黑;font-size: 16pt;font-weight: bold">
-            {{post.title}}
-        </p>
-        <p style="font-family: 微软雅黑;font-size: 16pt;letter-spacing: 1pt">
-            {{post.body}}
+            <a href="/post/{{post.slug}}">
+                {{post.title}}
+            </a>
         </p>
     {% endfor %}
     <hr>
